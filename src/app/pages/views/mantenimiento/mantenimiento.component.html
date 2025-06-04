@@ -1,0 +1,21 @@
+<div class="flex flex-column gap-2">
+    <a routerLink="mantenimiento-form/new" class="p-button font-bold w-max">
+      Crear nuevo mantenimiento
+    </a>
+    <div class="flex gap-4 flex-wrap">
+      @for (mantenimiento of mantenimientos; track mantenimiento.id) {
+      <p-card>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-1 mt-1">
+            <p-button (onClick)="deleteMantenimiento(mantenimiento.id)" label="Borrar" severity="secondary" />
+            <a routerLink="mantenimiento-form/{{ mantenimiento.id }}" class="p-button font-bold">
+              Editar
+            </a>
+          </div>
+        </ng-template>
+      </p-card>
+      }@empty {
+      <p>No existen mantenimientos</p>
+      }
+    </div>
+  </div>

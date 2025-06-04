@@ -1,0 +1,21 @@
+<div class="flex flex-column gap-2">
+    <a routerLink="pago-form/new" class="p-button font-bold w-max">
+      Crear nuevo pago
+    </a>
+    <div class="flex gap-4 flex-wrap">
+      @for (pago of pagos; track pago.id) {
+      <p-card>
+        <ng-template pTemplate="footer">
+          <div class="flex gap-1 mt-1">
+            <p-button (onClick)="deletePago(pago.id)" label="Borrar" severity="secondary" />
+            <a routerLink="pago-form/{{ pago.id }}" class="p-button font-bold">
+              Editar
+            </a>
+          </div>
+        </ng-template>
+      </p-card>
+      }@empty {
+      <p>No existen pagos</p>
+      }
+    </div>
+  </div>
